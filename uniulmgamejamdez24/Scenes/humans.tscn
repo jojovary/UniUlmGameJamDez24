@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5yof0y36m2dj"]
+[gd_scene load_steps=8 format=3 uid="uid://dhacxu5s43ddv"]
 
 [ext_resource type="Texture2D" uid="uid://7rhxt27r5bht" path="res://Sprites/Enemy_Zombie_Walk.png" id="1_evipe"]
 [ext_resource type="Script" path="res://Scripts/humans.gd" id="1_h06pe"]
@@ -36,7 +36,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["humans"]]
 collision_layer = 2
 collision_mask = 8
 script = ExtResource("1_h06pe")

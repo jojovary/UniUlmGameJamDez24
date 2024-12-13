@@ -18,13 +18,17 @@ func move_player():
 	move_and_slide()
 
 func activate_beam():
-	if !Input.is_action_pressed("ActivateBeam"):
-		$Beam.scale.y = 0
-		return
+	if Input.is_action_pressed("ActivateHumanBeam"):
+		$Humans_Beam.scale.y = 1
+	else:
+		$Humans_Beam.scale.y = 0
 	
-	$Beam.scale.y = 1
+	if Input.is_action_pressed("ActivateEnemyBeam"):
+		$Enemies_Beam.scale.y = 1
+	else:
+		$Enemies_Beam.scale.y = 0
+	
 
 func _on_beam_body_entered(body: Node2D) -> void:
 	if body.is_in_group("humans"):
-		# state change
-		pass
+		body.currentState = body.state.FLYING
