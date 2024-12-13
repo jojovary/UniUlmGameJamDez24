@@ -18,7 +18,7 @@ func move_player():
 	move_and_slide()
 
 func activate_beam():
-	if !Input.is_action_pressed("activate_beam"):
+	if !Input.is_action_pressed("ActivateBeam"):
 		$Beam.scale.y = 0
 		return
 	
