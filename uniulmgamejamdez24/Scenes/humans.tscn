@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5yof0y36m2dj"]
+
+[ext_resource type="Texture2D" uid="uid://7rhxt27r5bht" path="res://Sprites/Enemy_Zombie_Walk.png" id="1_evipe"]
+[ext_resource type="Script" path="res://Scripts/humans.gd" id="1_h06pe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8f8cb"]
+radius = 8.0
+height = 40.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ygpi"]
+atlas = ExtResource("1_evipe")
+region = Rect2(0, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38qq0"]
+atlas = ExtResource("1_evipe")
+region = Rect2(16, 0, 16, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp2qo"]
+atlas = ExtResource("1_evipe")
+region = Rect2(32, 0, 16, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdro7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ygpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38qq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp2qo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_h06pe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8f8cb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jdro7")
+frame_progress = 0.761719
+
+[node name="GroundDetector" type="RayCast2D" parent="."]
+position = Vector2(14, 0)
+target_position = Vector2(0, 31)
+collision_mask = 8
